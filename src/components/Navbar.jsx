@@ -6,7 +6,7 @@ import Nav from "react-bootstrap/Nav";
 function Navbar() {
   return (
     <BSNavbar bg="light" expand="lg">
-      <BSNavbar.Brand as={NavLink} to="/" exact>Firebase Test</BSNavbar.Brand>
+      <BSNavbar.Brand as={NavLink} to="/" exact>My Puja</BSNavbar.Brand>
       <BSNavbar.Toggle aria-controls="basic-navbar-nav" />
       <BSNavbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">

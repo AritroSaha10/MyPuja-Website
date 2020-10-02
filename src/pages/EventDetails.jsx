@@ -32,7 +32,20 @@ class EventDetails extends Component {
       <div className="container">
         <br />
         <h1>{this.props.event[0].title}</h1>
-        <img src={this.props.event[0].images[0]} alt="" />
+        <img
+          src={this.props.event[0].images[0]}
+          alt=""
+          className="img-fluid"
+          style={{
+            objectFit: "contain",
+            maxWidth: "800px",
+            maxHeight: "800px",
+          }}
+        />
+        <br/>
+        <p>{this.props.event[0].description}</p>
+        <br/>
+        <p>Address: {this.props.event[0].address}</p>
       </div>
     );
   }

@@ -42,9 +42,10 @@ class App extends Component {
             id: doc.id,
             title: doc.data().title,
             description: doc.data().description,
-            buttonLink: doc.data().buttonLink,
-            timestamp: doc.data().timestamp,
+            startTimestamp: doc.data().start_timestamp.seconds*1000,
+            endTimestamp: doc.data().end_timestamp.seconds*1000,
             images: doc.data().images,
+            address: doc.data().address
           });
         });
 

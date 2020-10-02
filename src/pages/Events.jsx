@@ -15,11 +15,17 @@ class Events extends Component {
 
   render() {
     let sortedCards = this.props.cards
-      .filter((a) => a.title.includes(this.state.searchTerm))
+      .filter(
+        (a) =>
+          a.title.toLowerCase().includes(this.state.searchTerm.toLowerCase()) |
+          a.description
+            .toLowerCase()
+            .includes(this.state.searchTerm.toLowerCase())
+      )
       .sort((a, b) => {
         // latest to oldest
-        if (a.timestamp > b.timestamp) return -1;
-        else if (a.timestamp < b.timestamp) return 1;
+        if (a.startTimestamp > b.startTimestamp) return -1;
+        else if (a.startTimestamp < b.startTimestamp) return 1;
         return 0;
       });
 
