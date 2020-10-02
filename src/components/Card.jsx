@@ -15,10 +15,21 @@ class Card extends Component {
       description: this.props.card.description,
       duration,
       endDatetime: endDatetime.format("YYYYMMDDTHHmmssZ"),
-      location: "Toronto",
+      location: this.props.card.address,
       startDatetime: startDatetime.format("YYYYMMDDTHHmmssZ"),
       title: this.props.card.title,
     };
+
+    let goToLivestreamButton = null;
+    if (this.props.card.livestreaming) {
+      goToLivestreamButton = (
+        <Link to="/livestreams">
+          <button className="btn btn-success mx-1 my-1">
+            <strong>Go to Livestream!</strong>
+          </button>
+        </Link>
+      );
+    }
 
     return (
       <div className="card" id={this.props.card.id}>
@@ -37,10 +48,13 @@ class Card extends Component {
         <div className="card-body">
           <h5 className="card-title">{this.props.card.title}</h5>
           <p className="card-text">{this.props.card.description}</p>
-          <AddToCalendarButton className="mx-0 my-1" event={event} />
+
+          {goToLivestreamButton}
+
+          <AddToCalendarButton className="mx-1 my-1" event={event} />
 
           <Link to={`/events/${this.props.card.id}`}>
-            <button className="btn btn-primary mx-0 my-1">
+            <button className="btn btn-info mx-1 my-1">
               More Information
             </button>
           </Link>
@@ -53,7 +67,10 @@ class Card extends Component {
   }
 
   formatRelativeTime() {
-    if (this.props.startTimestamp < Date.now() & this.props.endTimestamp > Date.now()) {
+    if (
+      (this.props.startTimestamp < Date.now()) &
+      (this.props.endTimestamp > Date.now())
+    ) {
       return "Currently happening";
     }
     if (this.props.card.startTimestamp > Date.now()) {

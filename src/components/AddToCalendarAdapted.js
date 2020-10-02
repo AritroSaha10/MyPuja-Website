@@ -65,7 +65,7 @@ const createDropdown = (event) => {
 
   return (
     <BSDropdown>
-      <BSDropdown.Toggle variant="success" id="dropdown-basic">
+      <BSDropdown.Toggle variant="primary" id="dropdown-basic">
         Add to Calendar
       </BSDropdown.Toggle>
 

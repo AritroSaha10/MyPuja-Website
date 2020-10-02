@@ -4,6 +4,10 @@
 
 import React, { Component } from "react";
 import Page404 from "./Page404";
+import { Link } from "react-router-dom";
+import moment from "moment";
+import AddToCalendarButton from "../components/AddToCalendarAdapted";
+import Carousel from "react-bootstrap/Carousel";
 
 class EventDetails extends Component {
   state = {};
@@ -26,7 +30,31 @@ class EventDetails extends Component {
       return new Page404().render();
     }
 
+    // We know there's an event, prepare everything for render
     console.log("Event: ", this.props.event);
+
+    const startDatetime = moment(this.props.event[0].startTimestamp).utc();
+    const endDatetime = moment(this.props.event[0].endTimestamp).utc();
+    const duration = moment.duration(endDatetime.diff(startDatetime)).asHours();
+    const event = {
+      description: this.props.event[0].description,
+      duration,
+      endDatetime: endDatetime.format("YYYYMMDDTHHmmssZ"),
+      location: this.props.event[0].address,
+      startDatetime: startDatetime.format("YYYYMMDDTHHmmssZ"),
+      title: this.props.event[0].title,
+    };
+
+    let goToLivestreamButton = null;
+    if (this.props.event[0].livestreaming) {
+      goToLivestreamButton = (
+        <Link to="/livestreams">
+          <button className="btn btn-success mx-1 my-1">
+            <strong>Go to Livestream!</strong>
+          </button>
+        </Link>
+      );
+    }
 
     return (
       <div className="container">
@@ -42,10 +70,16 @@ class EventDetails extends Component {
             maxHeight: "800px",
           }}
         />
-        <br/>
+        <br />
         <p>{this.props.event[0].description}</p>
-        <br/>
+        <br />
         <p>Address: {this.props.event[0].address}</p>
+        <br />
+        <div>
+          {goToLivestreamButton}
+
+          <AddToCalendarButton className="mx-1 my-1" event={event} />
+        </div>
       </div>
     );
   }
