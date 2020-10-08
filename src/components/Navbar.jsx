@@ -19,6 +19,9 @@ function Navbar() {
           <Nav.Link as={NavLink} to="/livestreams">
             Livestreams
           </Nav.Link>
+          <Nav.Link as={NavLink} to="/donate">
+            Donate
+          </Nav.Link>
           <Nav.Link as={NavLink} to="/about">
             About
           </Nav.Link>

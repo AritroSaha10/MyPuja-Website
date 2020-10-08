@@ -12,7 +12,7 @@ class Livestreams extends Component {
         <div>
           <h2 className="float-left">Current Livestream:</h2>
         </div>
-        <VideoEmbed className="float-center" videoID="jNQXAC9IVRw"/>
+        <VideoEmbed className="float-center" videoID="ScMzIvxBSi4"/>
       </div>
     );
   }

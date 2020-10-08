@@ -66,13 +66,12 @@ class EventDetails extends Component {
           className="img-fluid"
           style={{
             objectFit: "contain",
-            maxWidth: "800px",
+            maxWidth: "500px",
             maxHeight: "800px",
           }}
         />
         <br />
         <p>{this.props.event[0].description}</p>
-        <br />
         <p>Address: {this.props.event[0].address}</p>
         <br />
         <div>

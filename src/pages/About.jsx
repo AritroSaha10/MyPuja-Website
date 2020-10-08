@@ -16,8 +16,8 @@ function About() {
         alt="Cute cat"
         style={{
           objectFit: "contain",
-          maxWidth: "800px",
-          maxHeight: "800px",
+          maxWidth: "400px",
+          maxHeight: "400px",
         }}
       />
     </div>

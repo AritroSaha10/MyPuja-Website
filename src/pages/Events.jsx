@@ -8,9 +8,7 @@ class Events extends Component {
 
   // Input change
   handleSearchBarInput(event) {
-    this.setState({ searchTerm: event.target.value }, () => {
-      console.log("New state in ASYNC callback:", this.state.searchTerm);
-    });
+    this.setState({ searchTerm: event.target.value });
   }
 
   render() {
@@ -23,7 +21,9 @@ class Events extends Component {
             .includes(this.state.searchTerm.toLowerCase())
       )
       .sort((a, b) => {
-        // latest to oldest
+        // latest to oldest, but if livestreaming trait on, place first
+        if (a.livestreaming) return -1;
+        if (b.livestreaming) return 1;
         if (a.startTimestamp > b.startTimestamp) return -1;
         else if (a.startTimestamp < b.startTimestamp) return 1;
         return 0;

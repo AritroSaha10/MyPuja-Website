@@ -226,35 +226,6 @@ class Landing extends Component {
             </div>
           </div>
         </section>
-
-        <footer className="footer bg-light">
-          <div className="container">
-            <div className="row">
-              <div className="col-lg-6 h-100 text-center text-lg-left my-auto">
-                <ul className="list-inline mb-2">
-                  <li className="list-inline-item">
-                    <Link to="/about">About</Link>
-                  </li>
-                  <li className="list-inline-item">&sdot;</li>
-                  <li className="list-inline-item">
-                    <Link to="/contact">Contact</Link>
-                  </li>
-                  <li className="list-inline-item">&sdot;</li>
-                  <li className="list-inline-item">
-                    <Link to="/tos">Terms of Use</Link>
-                  </li>
-                  <li className="list-inline-item">&sdot;</li>
-                  <li className="list-inline-item">
-                    <Link to="/privacypolicy">Privacy Policy</Link>
-                  </li>
-                </ul>
-                <p className="text-muted small mb-4 mb-lg-0">
-                  &copy; Firebase Test 2020. All Rights Reserved.
-                </p>
-              </div>
-            </div>
-          </div>
-        </footer>
       </div>
     );
   }
