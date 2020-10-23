@@ -19,13 +19,20 @@ class Events extends Component {
           a.description
             .toLowerCase()
             .includes(this.state.searchTerm.toLowerCase())
+        //TODO: Add functionality that uses the keywords attribute
       )
       .sort((a, b) => {
-        // latest to oldest, but if livestreaming trait on, place first
+        // if livestreaming trait on, place first
         if (a.livestreaming) return -1;
         if (b.livestreaming) return 1;
-        if (a.startTimestamp > b.startTimestamp) return -1;
-        else if (a.startTimestamp < b.startTimestamp) return 1;
+
+        // pushes back event if it's already done
+        if (a.endTimestamp < Date.now()) return 1;
+        if (b.endTimestamp < Date.now()) return -1;
+
+        // otherwise, sort by least to greatest in unix timestamp
+        if (a.startTimestamp > b.startTimestamp) return 1;
+        else if (a.startTimestamp < b.startTimestamp) return -1;
         return 0;
       });
 

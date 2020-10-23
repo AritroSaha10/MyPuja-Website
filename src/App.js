@@ -26,12 +26,13 @@ class App extends Component {
   state = {
     cards: [],
     hasRecievedData: false,
+    livestreamURL: "",
   };
 
   // We can get our Firebase data from here
   componentDidMount() {
     // Get the promise for the posts reference
-    const postsRef = firebase.firestore().collection("posts");
+    const postsRef = firebase.firestore().collection("events");
     const dataGetPromise = postsRef.get();
 
     // Function that goes through each entry in the database and
@@ -50,7 +51,13 @@ class App extends Component {
           images: doc.data().images,
           address: doc.data().address,
           livestreaming: doc.data().livestreaming,
+          livestreamURL: doc.data().livestream_url,
+          keywords: doc.data().keywords,
         });
+
+        if (doc.data().livestream_url !== "") {
+          this.setState({ livestreamURL: doc.data().livestream_url });
+        }
       });
 
       // Finished with adding all entries into local array,
@@ -83,14 +90,20 @@ class App extends Component {
               component={(routerProps) => (
                 <Events
                   {...routerProps}
-                  cards={this.state.cards}
+                  cards={this.state.cards.filter((x) => x.endTimestamp > Date.now())}
                   onSearchBarChange={this.handleSearchBarInput}
                   finishedLoading={this.state.hasRecievedData}
                 />
               )}
             />
 
-            <Route path="/livestreams" exact component={Livestreams} />
+            <Route
+              path="/livestreams"
+              exact
+              component={(routerProps) => (
+                <Livestreams {...routerProps} events={this.state.cards} />
+              )}
+            />
 
             <Route
               path="/events/:id"
@@ -105,8 +118,10 @@ class App extends Component {
                 />
               )}
             />
-
+            {/*
+            TODO: Add donate functionality later 
             <Route path="/donate" exact component={Donate} />
+            */}
 
             <Route path="*" exact component={Page404} />
           </Switch>
@@ -117,9 +132,11 @@ class App extends Component {
               <li className="list-inline-item">
                 <Link to="/about">About</Link>
               </li>
+              {/*TODO: Add Donate Funcitonality Later
               <li className="list-inline-item">
                 <Link to="/donate">Donate</Link>
               </li>
+              */}
             </ul>
           </footer>
         </div>

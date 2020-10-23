@@ -7,10 +7,9 @@ import Page404 from "./Page404";
 import { Link } from "react-router-dom";
 import moment from "moment";
 import AddToCalendarButton from "../components/AddToCalendarAdapted";
-import Carousel from "react-bootstrap/Carousel";
 
 class EventDetails extends Component {
-  state = {};
+  state = { address: "" };
   render() {
     if (!this.props.finishedLoading) {
       // return loading html
@@ -56,6 +55,11 @@ class EventDetails extends Component {
       );
     }
 
+    let pujaFinishedNotice = null;
+    if (this.props.event[0].endTimestamp < Date.now()) {
+      pujaFinishedNotice = "However, this specific event has already been finished.";
+    }
+
     return (
       <div className="container">
         <br />
@@ -71,8 +75,9 @@ class EventDetails extends Component {
           }}
         />
         <br />
-        <p>{this.props.event[0].description}</p>
+        <p>{this.props.event[0].description} {pujaFinishedNotice}</p>
         <p>Address: {this.props.event[0].address}</p>
+        <p>Time: {moment(startDatetime).utcOffset(-240).format("dddd, MMMM Do YYYY, h:mm a")} - {moment(endDatetime).utcOffset(-240).format("h:mm a")}</p>
         <br />
         <div>
           {goToLivestreamButton}
