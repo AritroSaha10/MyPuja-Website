@@ -7,7 +7,7 @@ class Card extends Component {
   state = {};
 
   render() {
-    // Change these to match variables if there are any (ex. location, start time, end time)
+    // Prepare event object for add to calendar button
     const startDatetime = moment(this.props.card.startTimestamp).utc();
     const endDatetime = moment(this.props.card.endTimestamp).utc();
     const duration = moment.duration(endDatetime.diff(startDatetime)).asHours();
@@ -20,6 +20,7 @@ class Card extends Component {
       title: this.props.card.title,
     };
 
+    // Add the livestream button if the event is currently being livestreamed
     let goToLivestreamButton = null;
     if (this.props.card.livestreaming) {
       goToLivestreamButton = (
@@ -29,6 +30,12 @@ class Card extends Component {
           </button>
         </Link>
       );
+    }
+
+    // Remove the Add to Calendar button if the date has already passed
+    let addToCalendarButton = <AddToCalendarButton className="mx-1 my-1" event={event} />;
+    if (this.props.card.endTimestamp < Date.now()) {
+      addToCalendarButton = null;
     }
 
     return (
@@ -51,7 +58,7 @@ class Card extends Component {
 
           {goToLivestreamButton}
 
-          <AddToCalendarButton className="mx-1 my-1" event={event} />
+          {addToCalendarButton}
 
           <Link to={`/events/${this.props.card.id}`}>
             <button className="btn btn-info mx-1 my-1">
