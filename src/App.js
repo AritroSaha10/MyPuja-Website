@@ -38,9 +38,11 @@ class App extends Component {
       .enablePersistence()
       .catch(function (err) {
         if (err.code === "failed-precondition") {
-          console.log("Error: Couldn't cache data because multiple tabs are enabled.");
+          console.log(
+            "Error: Couldn't cache data because multiple tabs are enabled."
+          );
         } else if (err.code === "unimplemented") {
-          console.log("Error: The browser does not support persistence.")
+          console.log("Error: The browser does not support persistence.");
         }
       });
 
@@ -94,7 +96,18 @@ class App extends Component {
           <Navbar />
 
           <Switch>
-            <Route path="/" exact component={LandingPage} />
+            <Route
+              path="/"
+              exact
+              component={(routerProps) => (
+                <LandingPage
+                  {...routerProps}
+                  livestreaming={this.state.cards.filter(
+                    (doc) => doc.livestreaming
+                  )}
+                />
+              )}
+            />
 
             <Route path="/about" exact component={About} />
 
