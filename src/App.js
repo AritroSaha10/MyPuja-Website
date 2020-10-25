@@ -18,6 +18,7 @@ import EventDetails from "./pages/EventDetails";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import Livestreams from "./pages/Livestreams";
+// eslint-disable-next-line no-unused-vars
 import Donate from "./pages/Donate";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";

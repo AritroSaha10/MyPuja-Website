@@ -5,6 +5,7 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import firebase from 'firebase/app';
+// eslint-disable-next-line no-unused-vars
 import analytics from 'firebase/analytics';
 
 
