@@ -67,12 +67,8 @@ class EventDetails extends Component {
         <img
           src={this.props.event[0].images[0]}
           alt=""
-          className="img-fluid"
-          style={{
-            objectFit: "contain",
-            maxWidth: "500px",
-            maxHeight: "800px",
-          }}
+          className="img-fluid img-responsive"
+
         />
         <br />
         <p>{this.props.event[0].description} {pujaFinishedNotice}</p>

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import VideoEmbed from "../components/VideoEmbed";
+import ReactHLSPlayer from "react-hls-player";
 
 class Livestreams extends Component {
   state = {};
@@ -24,6 +25,22 @@ class Livestreams extends Component {
         );
         break;
       }
+
+      if (card.livestreaming === true && card.livestreamURL === "") {
+        // Show the current stream
+        embed = (
+          <div>
+            <div>
+              <h2 className="float-left">Current Livestream:</h2>
+            </div>
+            <ReactHLSPlayer
+              url="https://cdn12.henico.net:8443/live/kalibari/index.m3u8"
+              autoplay={true}
+              controls={true}
+            />
+          </div>
+        );
+      }
     }
 
     if (embed === null) {
@@ -46,7 +63,7 @@ class Livestreams extends Component {
       let card = this.props.events[i];
       if (!card.livestreaming && card.livestreamURL !== "") {
         embeds.push(
-          <div className="card" key={Date.now()+Math.random()*10}>
+          <div className="card" key={Date.now() + Math.random() * 10}>
             <VideoEmbed
               key={Date.now()}
               className="card-img-top"
@@ -54,9 +71,7 @@ class Livestreams extends Component {
             />
             <div className="card-body">
               <h5 className="card-title">{card.title}</h5>
-              <p className="card-text">
-                {card.description}
-              </p>
+              <p className="card-text">{card.description}</p>
             </div>
           </div>
         );

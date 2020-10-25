@@ -10,6 +10,7 @@ import firestore from "firebase/firestore";
 
 // Components
 import Navbar from "./components/Navbar";
+import ScrollToTop from "./components/ScrollToTop";
 
 // Pages
 import Events from "./pages/Events";
@@ -31,6 +32,18 @@ class App extends Component {
 
   // We can get our Firebase data from here
   componentDidMount() {
+    // Persistence
+    firebase
+      .firestore()
+      .enablePersistence()
+      .catch(function (err) {
+        if (err.code === "failed-precondition") {
+          console.log("Error: Couldn't cache data because multiple tabs are enabled.");
+        } else if (err.code === "unimplemented") {
+          console.log("Error: The browser does not support persistence.")
+        }
+      });
+
     // Get the promise for the posts reference
     const postsRef = firebase.firestore().collection("events");
     const dataGetPromise = postsRef.get();
@@ -76,6 +89,7 @@ class App extends Component {
   render() {
     return (
       <Router>
+        <ScrollToTop />
         <div className="App">
           <Navbar />
 
@@ -90,7 +104,9 @@ class App extends Component {
               component={(routerProps) => (
                 <Events
                   {...routerProps}
-                  cards={this.state.cards.filter((x) => x.endTimestamp > Date.now())}
+                  cards={this.state.cards.filter(
+                    (x) => x.endTimestamp > Date.now()
+                  )}
                   onSearchBarChange={this.handleSearchBarInput}
                   finishedLoading={this.state.hasRecievedData}
                 />
