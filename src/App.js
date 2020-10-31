@@ -18,8 +18,6 @@ import EventDetails from "./pages/EventDetails";
 import LandingPage from "./pages/LandingPage";
 import About from "./pages/About";
 import Livestreams from "./pages/Livestreams";
-// eslint-disable-next-line no-unused-vars
-import Donate from "./pages/Donate";
 
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 import Page404 from "./pages/Page404";
@@ -49,7 +47,6 @@ class App extends Component {
 
     // Get the promise for the posts reference
     const postsRef = firebase.firestore().collection("events");
-    const dataGetPromise = postsRef.get();
 
     // Function that goes through each entry in the database and
     // add them to the cards list in the state
@@ -84,9 +81,7 @@ class App extends Component {
     };
 
     // Run the promise and callback
-    dataGetPromise.then(exportQueriesToState).catch((err) => {
-      console.log(err);
-    });
+    postsRef.onSnapshot({ includeMetadataChanges: true }, exportQueriesToState);
   }
 
   render() {
