@@ -1,0 +1,47 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<div
+  class="card"
+  id="1"
+>
+  <img
+    alt=""
+    class="card-img-top"
+    src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/368px-Google_2015_logo.svg.png"
+    style="object-fit:contain;max-width:300px;max-height:300px;margin:auto;padding:30px 30px 30px 30px"
+  />
+  <div
+    class="card-body"
+  >
+    <h5
+      class="card-title"
+    >
+      title
+    </h5>
+    <p
+      class="card-text"
+    >
+      description
+    </p>
+    <a
+      href="/events/1"
+    >
+      <button
+        class="btn btn-info mx-1 my-1"
+      >
+        More Information
+      </button>
+    </a>
+  </div>
+  <div
+    class="card-footer"
+  >
+    <small
+      class="text-muted"
+    >
+      3 years ago
+    </small>
+  </div>
+</div>
+`;

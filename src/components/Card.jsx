@@ -3,6 +3,9 @@ import moment from "moment";
 import { Link } from "react-router-dom";
 import AddToCalendarButton from "./AddToCalendarAdapted";
 
+// TODO: Use PropTypes to create explicit prop requirements
+// For now, the props required is "card" which is the data for a card
+
 class Card extends Component {
   state = {};
 
