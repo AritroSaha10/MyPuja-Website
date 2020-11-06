@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "../components/Card";
+import Loading from "./Loading";
 
 class Events extends Component {
   state = {
@@ -38,16 +39,7 @@ class Events extends Component {
 
     if (!this.props.finishedLoading) {
       // return loading html
-      return (
-        <div className="" style={{ margin: "auto", width: "50%" }}>
-          <br />
-          <br />
-          <div className="spinner-border text-primary" role="status">
-            <span className="sr-only">Loading...</span>
-          </div>
-          <p>Loading...</p>
-        </div>
-      );
+      return <Loading />;
     }
 
     return (

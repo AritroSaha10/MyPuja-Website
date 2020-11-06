@@ -2,7 +2,7 @@
     Copyright 2020 Aritro Saha
  */
 
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import "./App.css";
 import firebase from "firebase/app";
 // eslint-disable-next-line no-unused-vars
@@ -12,15 +12,11 @@ import firestore from "firebase/firestore";
 import Navbar from "./components/Navbar";
 import ScrollToTop from "./components/ScrollToTop";
 
-// Pages
-import Events from "./pages/Events";
-import EventDetails from "./pages/EventDetails";
-import LandingPage from "./pages/LandingPage";
-import About from "./pages/About";
-import Livestreams from "./pages/Livestreams";
-
+// React Router
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import Page404 from "./pages/Page404";
+
+// Pages
+import Loading from "./pages/Loading";
 
 class App extends Component {
   state = {
@@ -85,6 +81,13 @@ class App extends Component {
   }
 
   render() {
+    const Events = lazy(() => import("./pages/Events"));
+    const EventDetails = lazy(() => import("./pages/EventDetails"));
+    const LandingPage = lazy(() => import("./pages/LandingPage"));
+    const About = lazy(() => import("./pages/About"));
+    const Livestreams = lazy(() => import("./pages/Livestreams"));
+    const Page404 = lazy(() => import("./pages/Page404"));
+    
     return (
       <Router>
         <ScrollToTop />
@@ -96,29 +99,41 @@ class App extends Component {
               path="/"
               exact
               component={(routerProps) => (
-                <LandingPage
-                  {...routerProps}
-                  livestreaming={this.state.cards.filter(
-                    (doc) => doc.livestreaming
-                  )}
-                />
+                <Suspense fallback={Loading()}>
+                  <LandingPage
+                    {...routerProps}
+                    livestreaming={this.state.cards.filter(
+                      (doc) => doc.livestreaming
+                    )}
+                  />
+                </Suspense>
               )}
             />
 
-            <Route path="/about" exact component={About} />
+            <Route
+              path="/about"
+              exact
+              component={(routerProps) => (
+                <Suspense fallback={Loading()}>
+                  <About {...routerProps} />
+                </Suspense>
+              )}
+            />
 
             <Route
               path="/events"
               exact
               component={(routerProps) => (
-                <Events
-                  {...routerProps}
-                  cards={this.state.cards.filter(
-                    (x) => x.endTimestamp > Date.now()
-                  )}
-                  onSearchBarChange={this.handleSearchBarInput}
-                  finishedLoading={this.state.hasRecievedData}
-                />
+                <Suspense fallback={Loading()}>
+                  <Events
+                    {...routerProps}
+                    cards={this.state.cards.filter(
+                      (x) => x.endTimestamp > Date.now()
+                    )}
+                    onSearchBarChange={this.handleSearchBarInput}
+                    finishedLoading={this.state.hasRecievedData}
+                  />
+                </Suspense>
               )}
             />
 
@@ -126,7 +141,9 @@ class App extends Component {
               path="/livestreams"
               exact
               component={(routerProps) => (
-                <Livestreams {...routerProps} events={this.state.cards} />
+                <Suspense fallback={Loading()}>
+                  <Livestreams {...routerProps} events={this.state.cards} />
+                </Suspense>
               )}
             />
 
@@ -134,13 +151,15 @@ class App extends Component {
               path="/events/:id"
               exact
               component={(routerProps) => (
-                <EventDetails
-                  {...routerProps}
-                  event={this.state.cards.filter(
-                    (x) => x.id === routerProps.match.params.id
-                  )}
-                  finishedLoading={this.state.hasRecievedData}
-                />
+                <Suspense fallback={Loading()}>
+                  <EventDetails
+                    {...routerProps}
+                    event={this.state.cards.filter(
+                      (x) => x.id === routerProps.match.params.id
+                    )}
+                    finishedLoading={this.state.hasRecievedData}
+                  />
+                </Suspense>
               )}
             />
             {/*
@@ -148,7 +167,15 @@ class App extends Component {
             <Route path="/donate" exact component={Donate} />
             */}
 
-            <Route path="*" exact component={Page404} />
+            <Route
+              path="*"
+              exact
+              component={(routerProps) => (
+                <Suspense fallback={Loading()}>
+                  <Page404 {...routerProps} />
+                </Suspense>
+              )}
+            />
           </Switch>
 
           <footer className="my-5 pt-5 text-muted text-center text-small">
