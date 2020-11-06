@@ -4,12 +4,13 @@ export default function ImgWithFallback({
   src,
   fallback,
   type = "image/webp",
+  classPassthrough,
   ...delegated
 }) {
   return (
     <picture>
       <source srcSet={src} type={type} />
-      <img src={fallback} {...delegated} />
+      <img className={classPassthrough} src={fallback} {...delegated} />
     </picture>
   );
 }
