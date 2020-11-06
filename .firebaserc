@@ -1,9 +1,9 @@
 {
   "projects": {
-    "default": "fir-react-test-4c35e"
+    "default": "my-puja-production"
   },
   "targets": {
-    "fir-react-test-4c35e": {
+    "my-puja-production": {
       "hosting": {
         "app": [
           "my-puja-production"
