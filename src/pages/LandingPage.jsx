@@ -17,11 +17,21 @@ import { Link } from "react-router-dom";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faDesktop, faVideo, faCheck } from "@fortawesome/free-solid-svg-icons";
 
+// Image with Fallback Code for WebP support, commented out since it isn't used right now, check comment before detailed feature descriptions with images
+// import ImgWithFallback from "../components/ImgWithFallback";
+
 // CSS and Images
 import "./landingpage.css";
-import bgShowcase1 from "../img/bg-showcase-4.jpg";
-import bgShowcase2 from "../img/bg-showcase-5.jpg";
-import bgShowcase3 from "../img/bg-showcase-6.jpg";
+// JPGs
+/*
+import bgShowcase1JPG from "../img/bg-showcase-4.jpg";
+import bgShowcase2JPG from "../img/bg-showcase-5.jpg";
+import bgShowcase3JPG from "../img/bg-showcase-6.jpg";
+*/
+// WebPs
+import bgShowcase1WEBP from "../img/bg-showcase-4.webp";
+import bgShowcase2WEBP from "../img/bg-showcase-5.webp";
+import bgShowcase3WEBP from "../img/bg-showcase-6.webp";
 
 function Landing(props) {
   return (
@@ -115,10 +125,11 @@ function Landing(props) {
       <section className="showcase">
         <div className="container-fluid p-0">
           <div className="row no-gutters">
+            {/* I can't make it use the ImgWithFallback class because whenever I include the class, the positioning gets messed up. I suspect it has something to due with the css using background-img, but that's all I can infer. For now, I'm just using WebP for everything. It's supported in most browsers and */}
             <div
               className="col-lg-6 order-lg-2 text-white showcase-img"
               style={{
-                backgroundImage: `url(${bgShowcase1})`,
+                backgroundImage: `url(${bgShowcase1WEBP})`,
                 WebkitTransform: "scaleX(-1)",
                 transform: "scaleX(-1)",
               }}
@@ -137,7 +148,7 @@ function Landing(props) {
             <div
               className="col-lg-6 text-white showcase-img"
               style={{
-                backgroundImage: `url(${bgShowcase2})`,
+                backgroundImage: `url(${bgShowcase2WEBP})`,
               }}
             ></div>
             <div className="col-lg-6 my-auto showcase-text">
@@ -154,7 +165,7 @@ function Landing(props) {
             <div
               className="col-lg-6 order-lg-2 text-white showcase-img"
               style={{
-                backgroundImage: `url(${bgShowcase3})`,
+                backgroundImage: `url(${bgShowcase3WEBP})`,
               }}
             ></div>
             <div className="col-lg-6 order-lg-1 my-auto showcase-text">
