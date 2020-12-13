@@ -15,7 +15,7 @@ import { Link } from "react-router-dom";
 
 // Font Awesome Icons
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faDesktop, faVideo, faCheck } from "@fortawesome/free-solid-svg-icons";
+import { faVideo, faCheck, faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
 // Image with Fallback Code for WebP support, commented out since it isn't used right now, check comment before detailed feature descriptions with images
 // import ImgWithFallback from "../components/ImgWithFallback";
@@ -74,7 +74,7 @@ function Landing(props) {
               <div className="features-icons-item mx-auto mb-5 mb-lg-0 mb-lg-3">
                 <div className="features-icons-icon d-flex">
                   <FontAwesomeIcon
-                    icon={faDesktop}
+                    icon={faCalendarAlt}
                     className="m-auto text-primary"
                     size="5x"
                   />
@@ -132,7 +132,7 @@ function Landing(props) {
                 backgroundImage: `url(${bgShowcase1WEBP})`,
                 WebkitTransform: "scaleX(-1)",
                 transform: "scaleX(-1)",
-                clipPath: "polygon(0 0, 100% 0, 75% 100%, 0 100%)"
+                clipPath: "polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0% 0%)"
               }}
             ></div>
             <div className="col-lg-6 order-lg-1 my-auto showcase-text">
@@ -150,7 +150,7 @@ function Landing(props) {
               className="col-lg-6 text-white showcase-img"
               style={{
                 backgroundImage: `url(${bgShowcase2WEBP})`,
-                clipPath: "polygon(0 0, 100% 0%, 75% 100%, 0 100%)"
+                clipPath: "polygon(75% 0%, 100% 50%, 75% 100%, 0% 100%, 0% 0%)"
               }}
             ></div>
             <div className="col-lg-6 my-auto showcase-text">
@@ -168,7 +168,7 @@ function Landing(props) {
               className="col-lg-6 order-lg-2 text-white showcase-img"
               style={{
                 backgroundImage: `url(${bgShowcase3WEBP})`,
-                clipPath: "polygon(0 0, 100% 0%, 100% 100%, 25% 100%)"
+                clipPath: "polygon(100% 0%, 100% 100%, 25% 100%, 0% 50%, 25% 0%)"
             }}
             ></div>
             <div className="col-lg-6 order-lg-1 my-auto showcase-text">
