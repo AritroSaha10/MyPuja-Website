@@ -83,7 +83,7 @@ class App extends Component {
   render() {
     const Events = lazy(() => import("./pages/Events"));
     const EventDetails = lazy(() => import("./pages/EventDetails"));
-    const LandingPage = lazy(() => import("./pages/LandingPage"));
+    const LandingPage = lazy(() => import("./pages/NewLandingPage"));
     const About = lazy(() => import("./pages/About"));
     const Livestreams = lazy(() => import("./pages/Livestreams"));
     const Page404 = lazy(() => import("./pages/Page404"));
