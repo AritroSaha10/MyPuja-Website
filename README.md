@@ -30,6 +30,6 @@ You can just get this project running on your computer like a normal `create-rea
 ## Author
 **Name**: Aritro Saha
 
-**Github URL**: [axiumin](https://github.com/Axiumin)
+**Github URL**: [axiumin](https://github.com/AritroSaha10)
 
 **Twitter**: [@AritroSaha10](http://twitter.com/aritrosaha10)
