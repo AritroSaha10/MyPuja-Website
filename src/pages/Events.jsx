@@ -1,10 +1,14 @@
+import { faCaretDown, faCaretUp } from "@fortawesome/free-solid-svg-icons";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import React, { Component } from "react";
+import { Collapse } from "react-bootstrap";
 import Card from "../components/Card";
 import Loading from "./Loading";
 
 class Events extends Component {
   state = {
     searchTerm: "",
+    pastEventsDropDown: false,
   };
 
   // Input change
@@ -45,6 +49,8 @@ class Events extends Component {
     return (
       <div className="container">
         <br />
+        <h1>Events</h1>
+        <br />
         <div className="input-group mb-3">
           <div className="input-group-prepend">
             <span className="input-group-text">
@@ -76,9 +82,11 @@ class Events extends Component {
 
         {sortedCards.length > 0 && (
           <div className="card-columns justify-content-center">
-            {sortedCards.map((card) => (
-              <Card key={card.id} card={card} />
-            ))}
+            {sortedCards
+              .filter((card) => card.endTimestamp >= Date.now())
+              .map((card) => (
+                <Card key={card.id} card={card} />
+              ))}
           </div>
         )}
 
@@ -109,7 +117,44 @@ class Events extends Component {
             <h4>No matching items found</h4>
           </div>
         )}
-        <div className="card-columns justify-content-center"></div>
+
+        <br />
+        <br />
+
+        {sortedCards.length > 0 && (
+          <div>
+            <div class="past-events-title d-inline-flex">
+              <h3 class="pr-2">Past Events</h3>
+
+              {/* Toggle for carret on side */}
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  this.setState({
+                    pastEventsDropDown: !this.state.pastEventsDropDown,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={this.state.pastEventsDropDown ? faCaretUp : faCaretDown}
+                />
+              </button>
+            </div>
+
+            <Collapse in={this.state.pastEventsDropDown}>
+              <div>
+                <br />
+                <div className="card-columns justify-content-center">
+                  {sortedCards
+                    .filter((card) => card.endTimestamp < Date.now())
+                    .map((card) => (
+                      <Card key={card.id} card={card} />
+                    ))}
+                </div>
+              </div>
+            </Collapse>
+          </div>
+        )}
       </div>
     );
   }
