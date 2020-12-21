@@ -121,26 +121,26 @@ class Events extends Component {
         <br />
         <br />
 
-        <div>
-          <div class="past-events-title d-inline-flex">
-            <h2 class="pr-2">Past Events</h2>
+        {sortedCards.length > 0 && (
+          <div>
+            <div class="past-events-title d-inline-flex">
+              <h3 class="pr-2">Past Events</h3>
 
-            {/* Toggle for carret on side */}
-            <button
-              className="btn btn-primary"
-              onClick={() =>
-                this.setState({
-                  pastEventsDropDown: !this.state.pastEventsDropDown,
-                })
-              }
-            >
-              <FontAwesomeIcon
-                icon={this.state.pastEventsDropDown ? faCaretUp : faCaretDown}
-              />
-            </button>
-          </div>
+              {/* Toggle for carret on side */}
+              <button
+                className="btn btn-primary"
+                onClick={() =>
+                  this.setState({
+                    pastEventsDropDown: !this.state.pastEventsDropDown,
+                  })
+                }
+              >
+                <FontAwesomeIcon
+                  icon={this.state.pastEventsDropDown ? faCaretUp : faCaretDown}
+                />
+              </button>
+            </div>
 
-          {sortedCards.length > 0 && (
             <Collapse in={this.state.pastEventsDropDown}>
               <div>
                 <br />
@@ -153,8 +153,8 @@ class Events extends Component {
                 </div>
               </div>
             </Collapse>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }
