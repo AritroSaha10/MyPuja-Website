@@ -1,5 +1,10 @@
 # My Puja Website
+![Firebase CD Badge](https://github.com/aritrosaha10/mypuja-website/workflows/Firebase%20Continuous%20Deployment/badge.svg)
+![CI Badge](https://github.com/aritrosaha10/mypuja-website/workflows/Node%20Continuous%20Integration/badge.svg)
+
 A full stack web app with organized directory of events / pujas and livestreams directed toward Hindu temple-goers, specifically patrons of the Toronto Kalibari temple.
+
+![Website Logo](https://my-puja-production.web.app/logo192.png)
 
 ## Features
 - Display pujas / temple events in an organized fashion
@@ -12,6 +17,7 @@ A full stack web app with organized directory of events / pujas and livestreams 
 ## Demo
 Since this is a working website made as a personal project for a temple, it can be found here: https://my-puja-production.web.app
 
+![Landing Page](https://i.imgur.com/Jfh3y3q.png)
 ## Project Info
 
 ### Frontend
