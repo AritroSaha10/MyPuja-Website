@@ -127,9 +127,7 @@ class App extends Component {
                 <Suspense fallback={Loading()}>
                   <Events
                     {...routerProps}
-                    cards={this.state.cards.filter(
-                      (x) => x.endTimestamp > Date.now()
-                    )}
+                    cards={this.state.cards}
                     onSearchBarChange={this.handleSearchBarInput}
                     finishedLoading={this.state.hasRecievedData}
                   />
