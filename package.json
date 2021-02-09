@@ -10,6 +10,9 @@
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
     "bootstrap": "^4.5.2",
     "firebase": "^7.24.0",
     "moment": "^2.29.0",
@@ -21,6 +24,7 @@
     "react-geocode": "^0.2.2",
     "react-hls-player": "^1.1.0",
     "react-router-dom": "^5.2.0",
+    "react-router-sitemap": "^1.2.0",
     "react-scripts": "^3.4.4",
     "redux": "^4.0.5"
   },

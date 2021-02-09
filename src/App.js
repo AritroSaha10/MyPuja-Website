@@ -177,7 +177,7 @@ class App extends Component {
           </Switch>
 
           <footer className="my-5 pt-5 text-muted text-center text-small">
-            <p className="mb-1">© 2020 Aritro Saha</p>
+            <p className="mb-1">© 2021 Aritro Saha</p>
             <ul className="list-inline">
               <li className="list-inline-item">
                 <Link to="/about">About</Link>
