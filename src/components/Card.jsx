@@ -7,8 +7,6 @@ import AddToCalendarButton from "./AddToCalendarAdapted";
 // For now, the props required is "card" which is the data for a card
 
 class Card extends Component {
-  state = {};
-
   render() {
     // Prepare event object for add to calendar button
     const startDatetime = moment(this.props.card.startTimestamp).utc();

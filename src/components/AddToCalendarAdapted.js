@@ -81,7 +81,6 @@ const createDropdown = (event) => {
 };
 
 class AddToCalendarButton extends Component {
-  state = {};
   render() {
     return createDropdown(this.props.event);
   }
