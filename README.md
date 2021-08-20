@@ -1,6 +1,5 @@
 # My Puja Website
 ![Firebase CD Badge](https://github.com/aritrosaha10/mypuja-website/workflows/Firebase%20Continuous%20Deployment/badge.svg)
-![CI Badge](https://github.com/aritrosaha10/mypuja-website/workflows/Node%20Continuous%20Integration/badge.svg)
 
 A full stack web app with organized directory of events / pujas and livestreams directed toward Hindu temple-goers, specifically patrons of the Toronto Kalibari temple.
 
