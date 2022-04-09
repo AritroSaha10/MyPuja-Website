@@ -15,7 +15,7 @@
     "babel-register": "^6.26.0",
     "bootstrap": "^4.5.2",
     "firebase": "^7.24.0",
-    "moment": "^2.29.0",
+    "moment": "^2.29.2",
     "moment-timezone": "^0.5.31",
     "react": "^16.13.1",
     "react-add-to-calendar-hoc": "^1.0.10",
